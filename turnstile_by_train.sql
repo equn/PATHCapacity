@@ -10,7 +10,7 @@ WITH turnstile AS (
 
 ,sched AS (
   -- trip detail by route and service
-  SELECT trip.[﻿route_id] AS route_id
+  SELECT trip.[ï»¿route_id] AS route_id
         ,rte.route_long_name
         ,trip.[service_id]
         ,svc.service_name
@@ -41,19 +41,19 @@ WITH turnstile AS (
         --,trip.[trip_headsign]
   FROM [KIPP_NJ].[dbo].[AUTOLOAD$trips] trip
   JOIN [KIPP_NJ].[dbo].[AUTOLOAD$stop_times] times
-    ON trip.trip_id = times.[﻿trip_id]
+    ON trip.trip_id = times.[ï»¿trip_id]
   JOIN [KIPP_NJ].[dbo].[AUTOLOAD$stops] stops
-    ON times.stop_id = stops.[﻿stop_id]
+    ON times.stop_id = stops.[ï»¿stop_id]
    AND stops.location_type = 0
   JOIN [KIPP_NJ].[dbo].[AUTOLOAD$stops] parent
-    ON stops.parent_station = parent.[﻿stop_id]
+    ON stops.parent_station = parent.[ï»¿stop_id]
    AND parent.location_type = 1
   JOIN [KIPP_NJ].[dbo].[AUTOLOAD$calendar] svc
     ON trip.service_id = svc.[service_id]
   --LEFT OUTER JOIN [KIPP_NJ].[dbo].[AUTOLOAD$calendar_dates] exc
   --  ON trip.service_id = exc.[service_id]
   JOIN [KIPP_NJ].[dbo].[AUTOLOAD$routes] rte
-    ON trip.[﻿route_id] = rte.route_id
+    ON trip.[ï»¿route_id] = rte.route_id
  )
 
 ,scaffold AS (
